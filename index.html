@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Audio Musik & SFX -->
+<audio id="bgMusic" src="OldLove.mp3" loop></audio>
+<button id="musicToggle" class="music-toggle" aria-label="Toggle Musik">🎵</button>
+
+<div id="giftModal" class="gift-modal">
+  <div class="modal-card">
+    <div class="modal-emoji">🔑</div>
+    <h2>Eitsss — tunggu dulu! ✋🏻</h2>
+    <p>Kadonya dikunci WLEEE 😭<br>Harus pake <b>kunci rahasia</b> baru kebuka kadonya.</p>
+    <button id="findKey" class="find-key">CARI KUNCINYA ✦</button>
+  </div>
+</div>
+
+<!-- SECTION INTRO -->
+<div id="intro" class="intro">
+  <div class="gift-wrap">
+    <span class="badge-tag">FOR YOUR SPECIAL DAY ✦</span>
+    <h1 class="gift-title">Sayang ada sesuatu buat kamu HEHE</h1>
+    <div class="gift-sub">Klik dulu yaaa 🎁</div>
+    
+    <div id="gift" class="gift" role="button" tabindex="0" aria-label="Buka kado">
+      <div class="spark">✦ ✧ ✦</div>
+      <div class="bow"></div>
+      <div class="lid"></div>
+      <div class="gift-box"></div>
+    </div>
+    
+    <div class="tap">TAP THE GIFT ✦</div>
+  </div>
+</div>
+
+<div class="stars"></div>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+
+<section id="gate" class="screen" style="display:none">
+  <div id="lock" class="lock">
+    <div class="icon">
+      <div class="mascot"><i class="antenna"></i>
+        <i class="ear l"></i><i class="ear r"></i>
+        <div class="face"><i class="eye l"></i>
+          <i class="eye r"></i>
+          <i class="mouth"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="eyebrow">SECRET ZONE</div>
+    <div class="sub">Kai only 👀 masukin 4 angka rahasianya dulu</div>
+    <div class="dots">
+      <i class="dot"></i>
+      <i class="dot"></i>
+      <i class="dot"></i>
+      <i class="dot"></i>
+    </div>
+    <div class="keypad" id="keys"></div>
+    <div class="msg" id="msg" aria-live="polite"></div>
+  </div>
+</section>
+
+<div id="wrongModal" class="wrong-modal" role="dialog" aria-modal="true" aria-labelledby="wrongTitle">
+  <div class="wrong-card">
+    <div class="wrong-icon">👀</div>
+    <div class="wrong-kicker">KEY NOT FOUND</div>
+    <h2 id="wrongTitle">NETNOTT, salah 😭</h2>
+    <p id="wrongText">Hmm... kayaknya bukan itu kuncinya.</p>
+    <button id="tryAgain" class="try-again">COBA LAGI YA SAYANG ✦</button>
+  </div>
+</div>
+
+<!-- SECTION BIRTHDAY MAIN -->
+<section id="birthday">
+  <div class="hero">
+    <div class="hero-inner">
+      <span class="tag">ACCESS GRANTED ✓</span>
+      
+      <!-- Typing Effect -->
+      <h1 id="typewriter"></h1>
+      
+      <!-- Live Age Counter -->
+      <div class="age-badge" id="ageCounter">Calculating age...</div>
+
+      <p>Another year with you in this world ✦ Semoga di umur yang baru ini, kamu selalu dikelilingi hal-hal baik, 
+        punya banyak alasan buat senyum, dan semua yang kamu harapin pelan-pelan datang ke kamu. You deserve lots of happy days, Kaii sayanggg. 🤍</p>
+      
+     <!-- Card Singkat Awal -->
+      <div class="card">
+        <b>For you 🎂</b>
+        <p><b>Happy birthday, sayanggg! 🎂🤍</b></p>
+        <p>I actually have a lot to say to you today... tapi kayaknya kepanjangan kalau ditumpahin di sini semua 😮‍💨☝🏻</p>
+        
+        <button id="openLetterBtn" class="open-letter-btn" onclick="openLetter()">
+          💌 Baca pesan dari aku
+        </button>
+      </div>
+
+      <!-- Modal Pop-up Pesan Progressive -->
+      <div id="letterModal" class="letter-modal">
+        <div class="letter-card">
+          <button class="close-letter" onclick="closeLetter()">&times;</button>
+          
+          <div class="letter-content">
+            <!-- Slide 1 -->
+            <div class="letter-page active">
+              <span class="page-num">1 / 4</span>
+              <p>Di antara orang yang pernah datang dan pergi, aku seneng ternyata ada kamu yang jadi bagian dari hari-hariku 🥹🤏🏻</p>
+              <p>Makasih yaa udah hadir dan jadi seseorang yang punya tempat sendiri buat aku — tempat yang nggak perlu dibandingin sama siapa-siapa, karena emang cuma kamu yang ada di situ 🫵🏻🤍</p>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="letter-page">
+              <span class="page-num">2 / 4</span>
+              <p>Aku mungkin nggak selalu bilang (gengsi dikit boleh lah ya 😔☝🏻), tapi aku bersyukur bisa kenal kamu.</p>
+              <p>Bersyukur buat obrolan random kita, bercandaan nggak jelas, cerita-cerita kecil, sampai momen yang mungkin kelihatannya biasa aja tapi somehow jadi lebih menyenangkan karena ada kamu 🫶🏻✨</p>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="letter-page">
+              <span class="page-num">3 / 4</span>
+              <p>Di umur kamu yang sekarang, aku cuma berharap semoga banyak hal baik datang dan betah lama-lama di hidup kamu. Semoga sehat selalu, banyak bahagianya, dan semua yang lagi kamu usahain pelan-pelan menemukan jalannya 🤍🫂</p>
+              <p>Please take care of yourself, yaa sayang 🤍 Jangan terlalu keras sama diri sendiri, jangan kebanyakan begadang, jangan lupa makan, dan yang paling penting... jangan lupa bahagiaaa!! 😠🤏🏻💗</p>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="letter-page">
+              <span class="page-num">4 / 4</span>
+              <p>Tetep jadi Kai yang aku kenal yaa 🥹 Yang kadang baik, kadang random, tapi ujung-ujungnya tetep jadi manusia yang nggak bisa aku kesel-in lama-lama 😔🤏🏻</p>
+              <p>And nooo... Kita ini just friends... cuma kebetulan friend-nya satu-satunya aja HEHEHE 😋🤍✨</p>
+              <p><b>Happy birthday, kesayangankuuu! I'm really glad that you exist. 🥳🎂🤍</b></p>
+            </div>
+          </div>
+
+          <!-- Navigasi Slide -->
+          <div class="letter-nav">
+            <button id="prevPageBtn" onclick="changePage(-1)" disabled>← Prev</button>
+            <button id="nextPageBtn" onclick="changePage(1)">Next →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION FOTO FAVORIT -->
+      <div class="fav-photo-section">
+        <h3> A picture I really like...</h3>
+        <p class="section-sub">Ada foto kamu yang jadi favorit aku 🫣</p>
+
+        <div id="favCard" class="fav-card" onclick="revealFavPhoto()">
+          <div class="fav-blur-overlay" id="favOverlay">
+            <div class="lock-icon">🔒</div>
+            <p><b>I have a confession... 👀</b></p>
+            <p>Ada satu foto kamu yang entah kenapa jadi salah satu foto favorit aku. Jangan tanya kenapa, aku juga nggak tau 😌☝🏻</p>
+            <div class="tap-to-reveal">[ mau liat? 📷 ]</div>
+          </div>
+          
+          <img src="kai.jpeg" id="favImg" alt="Favorite Picture">
+        </div>
+
+        <div id="favCaption" class="fav-caption">
+          <p class="highlight-text">yup, this one. 🤌🏻🤍</p>
+          <p>I don't know what's so special about this picture, but I really, really like it. Kamu keliatan, <b>kamu banget</b> di sini. 🥺</p>
+          <p class="small-joke"><i>cuma fotonya aja yang aku suka 😼☝🏻<br>(orangnya juga dikit sih...) 🤏🏻</i></p>
+        </div>
+      </div>
+
+      <!-- SECTION OUR PICTURES -->
+      <div class="our-photo-section">
+        <h3> Our Pictures 📷 </h3>
+        <p class="section-sub">Terus bukannya foto kita, malah muncul frame kosong... 👀</p>
+
+        <div class="empty-frame-card">
+          <div class="empty-frame">
+            <div class="couple-icon">👥</div>
+            <div class="dash-border"></div>
+            <span class="placeholder-text">Reserved for us</span>
+          </div>
+
+          <div class="error-block">
+            <div class="error-code">404 — PHOTO NOT FOUND 😔</div>
+            <p class="error-desc">
+              Belom punya foto bareng ternyata...<br>
+              agak mencurigakan untuk ukuran <i>kesayanganku</i> 😳☝🏻
+            </p>
+          </div>
+
+          <div class="achievement-box">
+            <div class="achieve-title">Achievement still locked 🔒</div>
+            <div class="achieve-name">📷 Take our first picture together</div>
+            <div class="achieve-badge"><i>0/1 completed</i></div>
+          </div>
+
+          <div class="wishlist-wrap">
+            <button id="wishlistBtn" class="wishlist-btn" onclick="addToWishlist()">
+              [ masuk wishlist dulu 😸 ]
+            </button>
+            
+            <div id="wishlistSuccess" class="wishlist-success">
+              <div class="success-title">✓ Added to our to-do list!</div>
+              <p class="success-desc"><i>No pressure yaa... tapi ditunggu WKWK 🤪🤌🏻</i></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTLES & INTERACTIVE ENDING SECTION -->
+      <div class="bottles-section">
+        <h3>A Little Wish For You 🍾 ✨</h3>
+        <p class="section-sub">Aku nitip beberapa doa kecil di dalam sini.<br>Ambil satu... siapa tau semesta denger 👀 🤍</p>
+
+        <div class="bottle-container">
+          <div id="bottleWrapper" class="bottle-wrapper" onclick="openBottle()">
+            <div id="cork" class="cork">🍾</div>
+            <div class="bottle">🧪</div>
+          </div>
+
+          <div id="wishPaper" class="wish-paper">
+            <div id="wishHeader" class="wish-header">you got a little wish ✦</div>
+            <div id="wishText" class="wish-content"></div>
+            <div class="wish-footer">— for Kai</div>
+          </div>
+        </div>
+
+        <div id="bottleTriggerText" class="tap-hint" onclick="openBottle()">[ TAP THE BOTTLE ✨ ]</div>
+        
+        <div class="bottle-actions">
+          <div id="counterText" class="counter-text">
+            you've opened <span id="openCount">0</span> little wishes ✦
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION CLOSING CARD -->
+      <div class="closing-card">
+        <!-- Step 1: Title -->
+        <h3 class="closing-title fade-in-item step-1">Okay... that's all 🤌🏻🤍</h3>
+        
+        <!-- Step 2: Isi Teks Utama -->
+        <div class="closing-body fade-in-item step-2">
+          <p>Makasih yaa udah hadir dan jadi Kai yang aku kenal.</p>
+          <p>Semoga di umur yang baru ini kamu lebih banyak bahagianya, lebih banyak senyumnya, dan selalu dikelilingi hal-hal baik ✨</p>
+          <p><strong>happy birthday, sayanggg! 🎂🤍</strong></p>
+        </div>
+        
+        <!-- Step 3: Poin Highlight dengan Glow -->
+        <p class="closing-glow fade-in-item step-3">
+          <em class="glow-text">i'm really glad it's you.</em>
+        </p>
+        <p class="closing-signature fade-in-item step-3">
+          <em>— your one & only “just friend” 😼🤌🏻</em>
+        </p>
+
+        <!-- Step 4: Tombol WA -->
+        <div class="wa-container fade-in-item step-4">
+          <a href="https://wa.me/6281959878782?text=Udah%20baca%20semuanya%20nih!" target="_blank" class="wa-button">
+            udah baca semuanya? ganggu aku di WA ↗ 😼
+          </a>
+        </div>
+
+        <!-- Step 5: Signature Footer -->
+        <footer class="closing-footer fade-in-item step-5">
+          <p class="footer-note"><em>a tiny piece of the internet, made just for you ♡</em></p>
+          <p class="footer-author">— <strong>Aisyah</strong>, 2026</p>
+        </footer>
+
+        <!-- Step 6: Easter Egg -->
+        <div class="easter-egg fade-in-item step-6" onclick="alert('Makasih udah klik sampai sini 🫣🤍')">
+          <small>✦ Tap di sini kalo gabut</small>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
